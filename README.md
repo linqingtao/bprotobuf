@@ -1,2 +1,2 @@
 # bprotobuf
-parse binary protocols
+make c/c++/js/java code to serialize&&deserialize binary protocols

@@ -1,0 +1,59 @@
+package=a.b.c;
+endian=small;
+attach=false;
+
+protocol Head {
+    int8 start = 1  [fixed=2];
+    int32 afn = 2;
+    int32 type = 3;
+    uint32 seq = 4;
+}
+
+protocol Protocol1 {
+
+    int32 a = 1;
+    int64 b = 2;
+}
+
+protocol Protocol2 {
+
+    int32 a = 1;
+    int64 b = 2;
+}
+
+
+protocol SendMsg {
+    Head head = 1;
+    int8 type = 2[1=Protocol1;2=Protocol2];
+    int64 l = 3;
+    uint32 u = 4;
+    double f = 5;
+    bits   bita = 6[len=2];
+    bits   bitb = 7[len=3];
+    bits   bitc = 8[len=5];
+    bits   bitd = 9[len=7];
+    int32 string_len = 11;
+    int32 info_len = 12;
+    int32 bytes_len = 13;
+    int32 uint16_len = 14;
+    int32 heads_len = 15;
+    int32 strings_len = 16;
+    bytes  data = 17[len=20];
+    bytes  data2 = 18[len=bytes_len];
+    string str = 19[len=12];
+    string str2 = 20[len=string_len];
+    array<Head> heads = 21[len=2];
+    array<Head> var_heads = 22[len=heads_len];
+    array<int16> int16s = 23[len=5];
+    array<uint32> uint16s = 24[len=uint16_len];
+    var child = 27[afn=type];
+    int32 string_len1 = 28;
+    int32 bytes_len1 = 29;
+    int32 array_len1 = 30;
+    string str3 = 31[len=string_len1;max=6];
+    bytes  data3 = 32[len=bytes_len1;max=4];
+    array<Head> heads3 = 33[len=array_len1;max=3];
+}
+
+
+
